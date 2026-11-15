@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Chhath Puja, Afarna | From Ateq</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Canvas Confetti CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <!-- Google Fonts: Cinzel Decorative & Playfair Display for headings, Poppins & Hind for clean legibility -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Hind:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Typography System */
+        .font-display-festive {
+            font-family: 'Cinzel Decorative', 'Playfair Display', serif;
+        }
+        .font-serif-editorial {
+            font-family: 'Playfair Display', serif;
+        }
+        .font-hindi-clean {
+            font-family: 'Hind', sans-serif;
+        }
+        .font-body-clean {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Rich Twilight-to-Golden-Sunset Riverbank Atmosphere */
+        body {
+            background: linear-gradient(180deg,
+                #0d0618 0%,      /* Deep Twilight Midnight */
+                #1e0b36 22%,     /* Sacred Indigo-Violet */
+                #4a154b 44%,     /* Royal Plum Sunset */
+                #9c2b36 62%,     /* Crimson Dusk */
+                #d96b27 75%,     /* Saffron Horizon */
+                #ffb703 83%,     /* Golden Sunlit Rim */
+                #161233 88%,     /* Sacred River Reflection */
+                #090514 100%     /* Deep River Night */
+            );
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Glowing Surya Dev Pulsing Aura */
+        @keyframes suryaPulse {
+            0%, 100% {
+                transform: translate(-50%, 0) scale(1);
+                box-shadow: 0 0 55px 18px rgba(255, 183, 3, 0.72),
+                            0 0 115px 48px rgba(217, 107, 39, 0.48),
+                            0 0 190px 85px rgba(156, 43, 54, 0.28);
+            }
+            50% {
+                transform: translate(-50%, -6px) scale(1.05);
+                box-shadow: 0 0 75px 28px rgba(255, 183, 3, 0.9),
+                            0 0 145px 68px rgba(217, 107, 39, 0.65),
+                            0 0 230px 105px rgba(156, 43, 54, 0.38);
+            }
+        }
+        .surya-orb {
+            animation: suryaPulse 4.8s ease-in-out infinite;
+        }
+
+        /* Rotating Golden Sun Rays */
+        @keyframes rotateRays {
+            from { transform: translate(-50%, 0) rotate(0deg); }
+            to { transform: translate(-50%, 0) rotate(360deg); }
+        }
+        .surya-rays {
+            animation: rotateRays 50s linear infinite;
+        }
+
+        /* Twinkling Stars in Twilight Sky */
+        @keyframes starTwinkle {
+            0%, 100% { opacity: 0.2; transform: scale(0.75); }
+            50% { opacity: 1; transform: scale(1.35); }
+        }
+        .star-dot {
+            animation: starTwinkle 3.2s ease-in-out infinite;
+        }
+
+        /* River Wave Motion */
+        @keyframes riverDrift {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(-28px); }
+            100% { transform: translateX(0); }
+        }
+        .wave-front {
+            animation: riverDrift 7.5s ease-in-out infinite;
+        }
+        .wave-back {
+            animation: riverDrift 11.5s ease-in-out infinite reverse;
+        }
+
+        /* Floating Earthen Diya Bobbing */
+        @keyframes diyaBob {
+            0%, 100% { transform: translateY(0px) rotate(-2deg); }
+            50% { transform: translateY(-8px) rotate(2.5deg); }
+        }
+        .diya-bob-a { animation: diyaBob 4.1s ease-in-out infinite; }
+        .diya-bob-b { animation: diyaBob 4.9s ease-in-out infinite 0.9s; }
+        .diya-bob-c { animation: diyaBob 4.5s ease-in-out infinite 1.7s; }
+
+        /* Diya Flame Flicker */
+        @keyframes flameDance {
+            0%, 100% { transform: scale(1) skewX(0deg); opacity: 0.95; }
+            30% { transform: scale(1.09, 0.93) skewX(3deg); opacity: 1; }
+            60% { transform: scale(0.94, 1.07) skewX(-2.5deg); opacity: 0.9; }
+        }
+        .diya-flame {
+            transform-origin: bottom center;
+            animation: flameDance 1.35s ease-in-out infinite;
+        }
+
+        /* Sacred Glass Card */
+        .sacred-card {
+            background: linear-gradient(160deg, rgba(30, 11, 54, 0.78) 0%, rgba(74, 21, 75, 0.72) 55%, rgba(22, 18, 51, 0.85) 100%);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1.5px solid rgba(255, 183, 3, 0.42);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.58), inset 0 0 32px rgba(255, 183, 3, 0.14);
+        }
+
+        /* Ornamental Golden Divider */
+        .gold-filigree {
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 183, 3, 0.75) 50%, transparent 100%);
+        }
+    </style>
+</head>
+<body class="font-body-clean text-amber-50 relative selection:bg-amber-400 selection:text-purple-950">
+
+    <!-- ================= AMBIENT SKY, SURYA DEV & SACRED RIVER SCENERY ================= -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0" aria-hidden="true">
+
+        <!-- Twinkling Golden Twilight Stars -->
+        <div id="sky-stars" class="absolute inset-0"></div>
+
+        <!-- Rotating Golden Sun Rays -->
+        <div class="surya-rays absolute top-14 sm:top-12 left-1/2 w-[500px] h-[500px] sm:w-[680px] sm:h-[680px] opacity-25">
+            <svg viewBox="0 0 200 200" class="w-full h-full fill-amber-300">
+                <g transform="translate(100,100)">
+                    <polygon points="0,-100 3.5,-18 -3.5,-18" />
+                    <polygon points="0,-100 3.5,-18 -3.5,-18" transform="rotate(30)" />
+                    <polygon points="0,-100 3.5,-18 -3.5,-18" transform="rotate(60)" />
+                    <polygon points="0,-100 3.5,-18 -3.5,-18" transform="rotate(90)" />
+                    <polygon points="0,-100 3.5,-18 -3.5,-18" transform="rotate(120)" />
+                    <polygon points="0,-100 3.5,-18 -3.5,-18" transform="rotate(150)" />
+                    <polygon points="0,-100 3.5,-18 -3.5,-18" transform="rotate(180)" />
+                    <polygon points="0,-100 3.5,-18 -3.5,-18" transform="rotate(210)" />
+                    <polygon points="0,-100 3.5,-18 -3.5,-18" transform="rotate(240)" />
+                    <polygon points="0,-100 3.5,-18 -3.5,-18" transform="rotate(270)" />
+                    <polygon points="0,-100 3.5,-18 -3.5,-18" transform="rotate(300)" />
+                    <polygon points="0,-100 3.5,-18 -3.5,-18" transform="rotate(330)" />
+                </g>
+            </svg>
+        </div>
+
+        <!-- Interactive Glowing Surya Dev (Sun God) -->
+        <button id="surya-trigger" type="button" title="Tap Surya Dev for Golden Blessings"
+            class="pointer-events-auto surya-orb absolute top-24 sm:top-20 left-1/2 w-40 h-40 sm:w-52 sm:h-52 rounded-full bg-gradient-to-b from-amber-100 via-amber-400 to-orange-600 cursor-pointer focus:outline-none">
+        </button>
+
+        <!-- Sacred Riverbank & Animated Waters at Bottom -->
+        <div class="absolute bottom-0 left-0 right-0 h-[33vh] bg-gradient-to-b from-[#161233]/85 via-[#0f0b24]/95 to-[#090514] border-t border-amber-400/35">
+            <!-- Golden Sun Shimmer Reflection Across the River -->
+            <div class="w-40 sm:w-64 h-full mx-auto bg-gradient-to-b from-amber-400/35 via-orange-500/15 to-transparent blur-md"></div>
+
+            <!-- Gentle River Wave Layers -->
+            <svg class="wave-front absolute top-2 left-0 w-[116%] h-12 opacity-45" viewBox="0 0 1200 60" preserveAspectRatio="none">
+                <path d="M0,30 Q150,6 300,30 T600,30 T900,30 T1200,30 L1200,60 L0,60 Z" fill="#ffb703" fill-opacity="0.24"/>
+            </svg>
+            <svg class="wave-back absolute top-10 left-0 w-[116%] h-14 opacity-30" viewBox="0 0 1200 60" preserveAspectRatio="none">
+                <path d="M0,30 Q150,54 300,30 T600,30 T900,30 T1200,30 L1200,60 L0,60 Z" fill="#d96b27" fill-opacity="0.28"/>
+            </svg>
+
+            <!-- Floating Earthen Diyas Container (Interactive + Extra Diyas on Arghya) -->
+            <div id="river-diyas-layer" class="absolute inset-0 pointer-events-auto">
+                <!-- Left Floating Diya -->
+                <button type="button" aria-label="Floating Sacred Diya"
+                    class="diya-interactive diya-bob-a absolute bottom-12 left-[7%] sm:left-[15%] cursor-pointer focus:outline-none">
+                    <svg width="60" height="60" viewBox="0 0 64 64">
+                        <circle cx="32" cy="22" r="17" fill="#ffb703" opacity="0.32"/>
+                        <path class="diya-flame" d="M32 7 C25 18, 25 26, 32 28 C39 26, 39 18, 32 7 Z" fill="#fef08a"/>
+                        <path class="diya-flame" d="M32 13 C29 19, 29 25, 32 26 C35 25, 35 19, 32 13 Z" fill="#f97316"/>
+                        <path d="M12 30 Q32 48 52 30 Q42 36 32 36 Q22 36 12 30 Z" fill="#b45309"/>
+                        <path d="M14 30 Q32 44 50 30 L45 40 Q32 46 19 40 Z" fill="#78350f"/>
+                        <ellipse cx="32" cy="45" rx="24" ry="3" fill="none" stroke="#ffb703" stroke-width="1" opacity="0.5"/>
+                    </svg>
+                </button>
+
+                <!-- Right Floating Diya -->
+                <button type="button" aria-label="Floating Sacred Diya"
+                    class="diya-interactive diya-bob-b absolute bottom-16 right-[8%] sm:right-[16%] cursor-pointer focus:outline-none">
+                    <svg width="64" height="64" viewBox="0 0 64 64">
+                        <circle cx="32" cy="22" r="18" fill="#ffb703" opacity="0.36"/>
+                        <path class="diya-flame" d="M32 7 C25 18, 25 26, 32 28 C39 26, 39 18, 32 7 Z" fill="#fef08a"/>
+                        <path class="diya-flame" d="M32 12 C29 19, 29 25, 32 26 C35 25, 35 19, 32 12 Z" fill="#ea580c"/>
+                        <path d="M10 30 Q32 50 54 30 Q42 36 32 36 Q22 36 10 30 Z" fill="#d97706"/>
+                        <path d="M13 30 Q32 45 51 30 L46 41 Q32 47 18 41 Z" fill="#78350f"/>
+                        <ellipse cx="32" cy="46" rx="26" ry="3.5" fill="none" stroke="#fde047" stroke-width="1" opacity="0.55"/>
+                    </svg>
+                </button>
+
+                <!-- Center-Left Distant Diya -->
+                <button type="button" aria-label="Floating Sacred Diya"
+                    class="diya-interactive diya-bob-c hidden sm:block absolute bottom-24 left-[30%] opacity-90 cursor-pointer focus:outline-none">
+                    <svg width="44" height="44" viewBox="0 0 64 64">
+                        <circle cx="32" cy="22" r="15" fill="#ffb703" opacity="0.28"/>
+                        <path class="diya-flame" d="M32 9 C27 18, 27 26, 32 28 C37 26, 37 18, 32 9 Z" fill="#fef08a"/>
+                        <path d="M14 30 Q32 46 50 30 L44 40 Q32 45 20 40 Z" fill="#92400e"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= MAIN DEDICATION & GREETING CONTENT ================= -->
+    <main class="relative z-10 max-w-xl mx-auto px-4 pt-8 pb-24 sm:pt-12 flex flex-col items-center">
+
+        <!-- Dedication Pill Badge -->
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#1e0b36]/85 border border-amber-400/50 shadow-lg mb-5">
+            <span class="text-amber-300 text-xs sm:text-sm">✦</span>
+            <span class="text-xs sm:text-sm font-medium tracking-wider text-amber-200">
+                A Special Sacred Blessing from Ateq
+            </span>
+            <span class="text-amber-300 text-xs sm:text-sm">✦</span>
+        </div>
+
+        <!-- Main Festive Headline -->
+        <header class="text-center mb-6 sm:mb-8">
+            <p class="font-hindi-clean text-sm sm:text-base font-semibold tracking-widest text-amber-300/95 uppercase mb-1">
+                ॐ सूर्याय नमः • जय छठी मैया
+            </p>
+            <h1 class="font-display-festive text-3xl sm:text-5xl text-transparent bg-clip-text bg-gradient-to-b from-amber-100 via-amber-300 to-orange-400 drop-shadow-[0_4px_14px_rgba(0,0,0,0.75)] leading-tight">
+                Happy Chhath Puja, Afarna
+            </h1>
+        </header>
+
+        <!-- ================= DEDICATED GREETING CARD ================= -->
+        <article class="w-full sacred-card rounded-3xl p-6 sm:p-9 text-center relative overflow-hidden">
+
+            <!-- Ornamental Corner Filigree -->
+            <div class="absolute top-3 left-3 w-7 h-7 border-t-2 border-l-2 border-amber-400/65 rounded-tl-xl"></div>
+            <div class="absolute top-3 right-3 w-7 h-7 border-t-2 border-r-2 border-amber-400/65 rounded-tr-xl"></div>
+            <div class="absolute bottom-3 left-3 w-7 h-7 border-b-2 border-l-2 border-amber-400/65 rounded-bl-xl"></div>
+            <div class="absolute bottom-3 right-3 w-7 h-7 border-b-2 border-r-2 border-amber-400/65 rounded-br-xl"></div>
+
+            <!-- Sacred Soop & Sugarcane Arghya Emblem -->
+            <div class="mx-auto w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-amber-400/20 to-orange-600/25 border border-amber-300/50 flex items-center justify-center mb-5 shadow-inner">
+                <svg class="w-10 h-10 sm:w-12 sm:h-12" viewBox="0 0 64 64" fill="none">
+                    <circle cx="32" cy="23" r="12" fill="#ffb703" opacity="0.88"/>
+                    <path d="M12 36 Q32 52 52 36 L46 46 Q32 56 18 46 Z" fill="#d96b27" stroke="#fef08a" stroke-width="1.5"/>
+                    <line x1="20" y1="38" x2="14" y2="14" stroke="#84cc16" stroke-width="2.5" stroke-linecap="round"/>
+                    <line x1="44" y1="38" x2="50" y2="14" stroke="#84cc16" stroke-width="2.5" stroke-linecap="round"/>
+                    <circle cx="26" cy="36" r="4" fill="#ea580c"/>
+                    <circle cx="33" cy="35" r="4.5" fill="#ffb703"/>
+                    <circle cx="39" cy="37" r="3.5" fill="#dc2626"/>
+                </svg>
+            </div>
+
+            <!-- Personal Salutation -->
+            <h2 class="font-serif-editorial italic text-xl sm:text-2xl text-amber-200 mb-4">
+                Dearest Afarna,
+            </h2>
+
+            <!-- Interactive Blessing Language Switcher (Clean Pill Tabs, Zero Inputs) -->
+            <div class="inline-flex items-center p-1 rounded-full bg-[#0d0618]/75 border border-amber-400/35 mb-5" role="tablist" aria-label="Blessing Language">
+                <button type="button" role="tab" aria-selected="true" data-lang="bhojpuri"
+                    class="lang-tab px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold bg-gradient-to-r from-amber-400 to-orange-500 text-[#1e0b36] shadow transition-all cursor-pointer">
+                    Bhojpuri
+                </button>
+                <button type="button" role="tab" aria-selected="false" data-lang="maithili"
+                    class="lang-tab px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-medium text-amber-200/85 hover:text-amber-100 transition-all cursor-pointer">
+                    Maithili
+                </button>
+                <button type="button" role="tab" aria-selected="false" data-lang="hindi"
+                    class="lang-tab px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-medium text-amber-200/85 hover:text-amber-100 transition-all cursor-pointer">
+                    Hindi
+                </button>
+            </div>
+
+            <!-- Sacred Traditional Verse -->
+            <div class="px-2 sm:px-4 mb-4">
+                <p id="traditional-verse" class="font-hindi-clean text-lg sm:text-xl font-semibold text-amber-100 leading-relaxed transition-opacity duration-200">
+                    “कांच ही बांस के बहंगिया, बहंगी लचकत जाए... छठी मैया के असीम कृपा से राउर जिनगी में हमेशा सुख, शांति आ खुशहाली बनल रहे!”
+                </p>
+            </div>
+
+            <!-- Golden Divider -->
+            <div class="h-[1.5px] w-40 mx-auto gold-filigree my-4"></div>
+
+            <!-- Heartfelt Personal Message Dedicated to Afarna -->
+            <p class="text-sm sm:text-base text-amber-100/90 leading-relaxed font-normal px-1 sm:px-3">
+                As the sacred twilight meets the golden glow of <span class="text-amber-300 font-medium">Surya Dev</span>, I pray that <span class="text-amber-300 font-medium">Chhathi Maiya</span> showers you with boundless happiness, radiant health, inner peace, and endless prosperity. May every prayer you offer at the sacred ghat be answered with grace and light.
+            </p>
+
+            <!-- Interactive Offer Arghya Celebration Button -->
+            <div class="mt-7">
+                <button id="offer-arghya-btn" type="button"
+                    class="w-full sm:w-auto px-7 py-3.5 rounded-2xl bg-gradient-to-r from-amber-400 via-orange-500 to-rose-600 hover:from-amber-300 hover:to-rose-500 text-[#140724] font-bold text-base shadow-[0_8px_25px_rgba(255,183,3,0.45)] active:scale-95 transition-all inline-flex items-center justify-center gap-2.5 cursor-pointer">
+                    <span class="text-lg">🪔</span>
+                    <span>Offer Arghya &amp; Blessings</span>
+                </button>
+            </div>
+
+            <!-- Clean Personal Signature Footer -->
+            <footer class="mt-8 pt-5 border-t border-amber-400/25">
+                <p class="text-xs uppercase tracking-[0.2em] text-amber-300/80 mb-1">
+                    With warmest festive wishes,
+                </p>
+                <p class="font-display-festive text-2xl sm:text-3xl text-amber-300 tracking-wide">
+                    Ateq
+                </p>
+            </footer>
+        </article>
+    </main>
+
+    <!-- ================= NON-BLOCKING BLESSING TOAST ================= -->
+    <div id="blessing-toast" role="status" aria-live="polite"
+        class="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 px-5 py-3 rounded-2xl bg-gradient-to-r from-amber-300 to-amber-400 text-[#160826] font-semibold text-xs sm:text-sm shadow-2xl border border-amber-100 flex items-center gap-2 opacity-0 pointer-events-none transition-all duration-300 translate-y-4 whitespace-nowrap">
+        <span id="toast-emoji">☀️</span>
+        <span id="toast-text">Sacred Arghya &amp; golden blessings sent to Afarna!</span>
+    </div>
+
+    <!-- ================= INTERACTIVE CELEBRATION SCRIPT ================= -->
+    <script>
+        (function () {
+            // Traditional Blessing Verses (Bhojpuri, Maithili, Hindi)
+            const VERSES = {
+                bhojpuri: "“कांच ही बांस के बहंगिया, बहंगी लचकत जाए... छठी मैया के असीम कृपा से राउर जिनगी में हमेशा सुख, शांति आ खुशहाली बनल रहे!”",
+                maithili: "“उग हे सूरज देव भेल भिनसरवा... छठी मैया आ भगवान भास्कर के कृपा सँ अहाँक जीवन मे सुख, शांति आ समृद्धि सदा बनल रहय!”",
+                hindi: "“सूर्य देव के दिव्य तेज और छठी मैया के पावन आशीर्वाद से आपके जीवन में सदैव सुख, उत्तम स्वास्थ्य और अपार समृद्धि का वास हो!”"
+            };
+
+            const skyStars = document.getElementById('sky-stars');
+            const riverDiyasLayer = document.getElementById('river-diyas-layer');
+            const traditionalVerse = document.getElementById('traditional-verse');
+            const langTabs = document.querySelectorAll('.lang-tab');
+            const offerArghyaBtn = document.getElementById('offer-arghya-btn');
+            const suryaTrigger = document.getElementById('surya-trigger');
+            const blessingToast = document.getElementById('blessing-toast');
+            const toastText = document.getElementById('toast-text');
+            const toastEmoji = document.getElementById('toast-emoji');
+
+            let toastTimer = null;
+            let extraDiyaCount = 0;
+
+            // 1. Populate Twinkling Golden Stars in the Twilight Sky
+            function renderTwilightStars() {
+                try {
+                    const total = window.innerWidth < 640 ? 24 : 42;
+                    const fragment = document.createDocumentFragment();
+                    for (let i = 0; i < total; i++) {
+                        const star = document.createElement('div');
+                        const size = Math.random() * 2.8 + 1.5;
+                        star.className = 'star-dot absolute rounded-full bg-amber-200';
+                        star.style.width = `${size}px`;
+                        star.style.height = `${size}px`;
+                        star.style.top = `${Math.random() * 58}%`;
+                        star.style.left = `${Math.random() * 100}%`;
+                        star.style.animationDelay = `${(Math.random() * 3.5).toFixed(2)}s`;
+                        fragment.appendChild(star);
+                    }
+                    skyStars.appendChild(fragment);
+                } catch (err) {
+                    console.error('Starfield render skipped:', err);
+                }
+            }
+
+            // 2. Festive Marigold, Saffron, Gold & Crimson Confetti Celebration
+            function triggerChhathConfetti(mode = 'burst') {
+                if (typeof confetti !== 'function') return;
+
+                const palette = ['#ffb703', '#fb8500', '#d96b27', '#9c2b36', '#fef08a'];
+
+                if (mode === 'grand') {
+                    confetti({
+                        particleCount: 70,
+                        angle: 60,
+                        spread: 68,
+                        origin: { x: 0.04, y: 0.68 },
+                        colors: palette
+                    });
+                    confetti({
+                        particleCount: 70,
+                        angle: 120,
+                        spread: 68,
+                        origin: { x: 0.96, y: 0.68 },
+                        colors: palette
+                    });
+                } else {
+                    confetti({
+                        particleCount: 85,
+                        spread: 82,
+                        origin: { y: 0.56 },
+                        colors: palette
+                    });
+                }
+            }
+
+            // 3. Non-Blocking Toast Banner
+            function showBlessingToast(message, emoji = '☀️') {
+                toastText.textContent = message;
+                toastEmoji.textContent = emoji;
+
+                blessingToast.classList.remove('opacity-0', 'translate-y-4');
+                blessingToast.classList.add('opacity-100', 'translate-y-0');
+
+                if (toastTimer) clearTimeout(toastTimer);
+                toastTimer = setTimeout(() => {
+                    blessingToast.classList.remove('opacity-100', 'translate-y-0');
+                    blessingToast.classList.add('opacity-0', 'translate-y-4');
+                }, 3400);
+            }
+
+            // 4. Spawn Extra Glowing Earthen Diya on the Sacred River
+            function lightExtraRiverDiya() {
+                if (extraDiyaCount >= 8) return;
+                extraDiyaCount++;
+
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.setAttribute('aria-label', 'Floating Sacred Diya');
+                const leftPos = 14 + Math.random() * 72;
+                const bottomPos = 10 + Math.random() * 18;
+                const animClass = ['diya-bob-a', 'diya-bob-b', 'diya-bob-c'][extraDiyaCount % 3];
+
+                btn.className = `diya-interactive ${animClass} absolute cursor-pointer focus:outline-none transition-opacity duration-500`;
+                btn.style.left = `${leftPos.toFixed(1)}%`;
+                btn.style.bottom = `${bottomPos.toFixed(1)}%`;
+                btn.innerHTML = `
+                    <svg width="48" height="48" viewBox="0 0 64 64">
+                        <circle cx="32" cy="22" r="16" fill="#ffb703" opacity="0.34"/>
+                        <path class="diya-flame" d="M32 8 C26 18, 26 26, 32 28 C38 26, 38 18, 32 8 Z" fill="#fef08a"/>
+                        <path class="diya-flame" d="M32 13 C29 19, 29 25, 32 26 C35 25, 35 19, 32 13 Z" fill="#f97316"/>
+                        <path d="M13 30 Q32 47 51 30 Q42 36 32 36 Q22 36 13 30 Z" fill="#d97706"/>
+                        <path d="M15 30 Q32 44 49 30 L44 40 Q32 45 20 40 Z" fill="#78350f"/>
+                    </svg>
+                `;
+                btn.addEventListener('click', () => {
+                    triggerChhathConfetti('burst');
+                    showBlessingToast('A sacred diya glows with blessings for Afarna!', '🪔');
+                });
+                riverDiyasLayer.appendChild(btn);
+            }
+
+            // 5. Language Switcher Pill Tabs
+            langTabs.forEach((tab) => {
+                tab.addEventListener('click', () => {
+                    const selectedLang = tab.getAttribute('data-lang');
+                    if (!VERSES[selectedLang]) return;
+
+                    langTabs.forEach((t) => {
+                        t.setAttribute('aria-selected', 'false');
+                        t.className = 'lang-tab px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-medium text-amber-200/85 hover:text-amber-100 transition-all cursor-pointer';
+                    });
+
+                    tab.setAttribute('aria-selected', 'true');
+                    tab.className = 'lang-tab px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold bg-gradient-to-r from-amber-400 to-orange-500 text-[#1e0b36] shadow transition-all cursor-pointer';
+
+                    traditionalVerse.style.opacity = '0';
+                    setTimeout(() => {
+                        traditionalVerse.textContent = VERSES[selectedLang];
+                        traditionalVerse.style.opacity = '1';
+                    }, 150);
+                });
+            });
+
+            // 6. Interactive Celebration Triggers
+            offerArghyaBtn.addEventListener('click', () => {
+                triggerChhathConfetti('grand');
+                lightExtraRiverDiya();
+                showBlessingToast('ॐ सूर्याय नमः! Sacred Arghya offered for Afarna!', '🪔');
+            });
+
+            suryaTrigger.addEventListener('click', () => {
+                triggerChhathConfetti('grand');
+                showBlessingToast('May Surya Dev’s golden radiance always bless Afarna!', '☀️');
+            });
+
+            document.querySelectorAll('.diya-interactive').forEach((diya) => {
+                diya.addEventListener('click', () => {
+                    triggerChhathConfetti('burst');
+                    showBlessingToast('A sacred diya glows with blessings for Afarna!', '🪔');
+                });
+            });
+
+            // Initialize Scene & Opening Confetti on Page Load
+            window.addEventListener('load', () => {
+                renderTwilightStars();
+                setTimeout(() => triggerChhathConfetti('grand'), 350);
+            });
+        })();
+    </script>
+</body>
+</html>
